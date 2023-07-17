@@ -189,7 +189,7 @@ sub=$(</dev/urandom tr -dc a-z | head -c5)
 DOMAIN=zeavpn.biz.id
 SUB_DOMAIN=${sub}.gratisan.me
 CF_ID=tukimangoblok@gmail.com
-CF_KEY=3f8ee99768d9ee10f1cc51afa5dab78e72293
+CF_KEY=mo1iXoJpWbxKLlluy5hv3jnJy-Anz4FoT1iU3A_a
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
 echo "Updating DNS for ${SUB_DOMAIN}..."
