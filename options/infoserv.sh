@@ -208,11 +208,11 @@ else
 fi
 
 # STATUS NGINX
-ngx=$(service nginx status | grep active | cut -d ' ' $stat)
-if [ "$ngx" = "active" ]; then
-resngx="${green}r]Running ${NC}( No Error )${NC}"
+ngx=$(service nginx status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+if [[ $ngx = "running" ]]; then
+   statsngx="${GREEN}Running ${NC}( No Error )${NC}"
 else
-statsngx="${red}Not Running ${NC}   ( Error )${NC}"
+   statsngx="${RED}Not Running ${NC}   ( Error )${NC}"
 fi
 
 # TOTAL RAM
