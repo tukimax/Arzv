@@ -1,8 +1,7 @@
 #!/bin/bash
 # =========================================
 # Quick Setup | Script Setup Manager
-# Edition : Stable Edition V1.0
-# Auther  : Wings Premium VPN
+# Auther  : Arz Vpn Store
 # (C) Copyright 2022
 # =========================================
 # // Export Color & Information
@@ -29,7 +28,7 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip > /root/tmp
+    curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -47,7 +46,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -64,7 +63,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -173,9 +172,9 @@ apt install -y nginx
 cd
 rm -fr /etc/nginx/sites-enabled/default
 rm -fr /etc/nginx/sites-available/default
-wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/tukimax/qwe/main/tools/nginx.conf" 
+wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/nginx.conf" 
 #mkdir -p /home/vps/public_html
-wget -q -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/tukimax/qwe/main/tools/vps.conf"
+wget -q -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/vps.conf"
 
 # Install Xray #
 #==========#
@@ -273,7 +272,7 @@ sed -i '$ iproxy_set_header Connection "upgrade";' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
 sed -i '$ i}' /etc/nginx/conf.d/xray.conf
 
-sed -i '$ ilocation = /kuota-habis' /etc/nginx/conf.d/xray.conf
+sed -i '$ ilocation = /v2ray' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_pass http://127.0.0.1:'"$kuotahabis"';' /etc/nginx/conf.d/xray.conf
@@ -447,7 +446,7 @@ cat <<EOF> /etc/xray/config.json
        "streamSettings":{
          "network": "ws",
             "wsSettings": {
-                "path": "/kuota-habis"
+                "path": "/v2ray"
           }
         }
      },

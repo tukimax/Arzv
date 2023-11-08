@@ -2,7 +2,7 @@
 # =========================================
 # Quick Setup | Script Setup Manager
 # Edition : Stable Edition V1.0
-# Author  : FREE TUNNELING PROJECT
+# Author  : Arz Vpn Store
 # (C) Copyright 2023
 # =========================================
 
@@ -51,10 +51,8 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
-REPO="https://raw.githubusercontent.com/tukimax/qwe/main/"
-
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip > /root/tmp
+    curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -72,7 +70,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -89,7 +87,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/tukimax/izz/main/ip | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/tukimax/permission/main/ip | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -97,6 +95,11 @@ PERMISSION () {
     fi
     BURIQ
 }
+red='\e[1;31m'
+green='\e[1;32m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
@@ -125,51 +128,51 @@ commonname=ArzVpn
 email=admin@arzvip.site
 
 # simple password minimal
-wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/tukimax/qwe/main/tools/password"
+wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
 cd
 
 # Getting websocket dropbear
-#wget -q -O /usr/local/bin/ws-dropbear "https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/ws-dropbear"
-#chmod +x /usr/local/bin/ws-dropbear
+wget -q -O /usr/local/bin/ws-dropbear "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/ws-dropbear"
+chmod +x /usr/local/bin/ws-dropbear
 
 # Installing Service
-#cat > /etc/systemd/system/ws-dropbear.service << END
-#[Unit]
-#Description=Ssh Websocket By Arz
-#Documentation=https://arzvpnstore.biz.id
-#After=network.target nss-lookup.target
+cat > /etc/systemd/system/ws-dropbear.service << END
+[Unit]
+Description=Ssh Websocket By Arz
+Documentation=https://arzvpnstore.biz.id
+After=network.target nss-lookup.target
 
-#[Service]
-#Type=simple
-#User=root
-#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-#NoNewPrivileges=true
-#ExecStart=/usr/bin/python2 -O /usr/local/bin/ws-dropbear 8880
-#Restart=on-failure
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/bin/python2 -O /usr/local/bin/ws-dropbear 2082
+Restart=on-failure
 
-#[Install]
-#WantedBy=multi-user.target
-#END
+[Install]
+WantedBy=multi-user.target
+END
 
-#systemctl daemon-reload >/dev/null 2>&1
-#systemctl enable ws-dropbear >/dev/null 2>&1
-#systemctl start ws-dropbear >/dev/null 2>&1
-#systemctl restart ws-dropbear >/dev/null 2>&1
+systemctl daemon-reload >/dev/null 2>&1
+systemctl enable ws-dropbear >/dev/null 2>&1
+systemctl start ws-dropbear >/dev/null 2>&1
+systemctl restart ws-dropbear >/dev/null 2>&1
 
 clear 
 
 # Getting websocket ssl stunnel
-wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/tukimax/qwe/main/tools/ws-stunnel"
+wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/ws-stunnel"
 chmod +x /usr/local/bin/ws-stunnel
 
 # Installing Service Ovpn Websocket
 cat > /etc/systemd/system/ws-stunnel.service << END
 [Unit]
-Description=Ovpn Websocket Wings Premium VPN
+Description=Ovpn Websocket By Arz
 Documentation=https://arzvpnstore.biz.id
 After=network.target nss-lookup.target
 [Service]
@@ -266,7 +269,7 @@ echo -ne
 fi
 cd
 echo -e "[ ${green}INFO$NC ] Installing badvpn for game support..."
-wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/tukimax/qwe/main/tools/newudpgw"
+wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw  >/dev/null 2>&1
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local >/dev/null 2>&1
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local >/dev/null 2>&1
@@ -310,7 +313,7 @@ fi
 
 # Install Stunnel5
 cd /root/
-wget -q "https://raw.githubusercontent.com/tukimax/qwe/main/tools/stunnel5.zip"
+wget -q "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/stunnel5.zip"
 unzip stunnel5.zip
 cd /root/stunnel
 chmod +x configure
@@ -373,7 +376,7 @@ END
 
 # Service Stunnel5 /etc/init.d/stunnel5
 rm -fr /etc/init.d/stunnel5
-wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/tukimax/qwe/main/tools/stunnel5.init"
+wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/tukimax/Arzv/main/tools/stunnel5.init"
 
 # Ubah Izin Akses
 #chmod 600 /etc/stunnel5/stunnel5.pem
@@ -489,12 +492,15 @@ echo -e "[ ${green}INFO$NC ] Install successfully..."
 sleep 1
 echo -e "[ ${green}INFO$NC ] Config file at /usr/local/ddos/ddos.conf"
 
-# banner /etc/issue.net
-echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
+# Banner /etc/issue.net
+rm -fr /etc/issue.net
+rm -fr /etc/issue.net.save
+sleep 1
+echo -e "[ ${green}INFO$NC ] Settings banner"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/tukimax/Arzv/main/issue.net"
+chmod +x /etc/issue.net
+echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
-# Ganti Banner
-wget -O /etc/issue.net "${REPO}/issue.net"
 
 # Blokir Torrent
 echo -e "[ ${green}INFO$NC ] Set iptables"
