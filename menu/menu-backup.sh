@@ -1,4 +1,5 @@
 #!/bin/bash
+# SCRIPT BY Arz
 
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
@@ -20,8 +21,6 @@ IPurple='\033[0;95m'      # Purple
 ICyan='\033[0;96m'        # Cyan
 IWhite='\033[0;97m'       # White
 NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 # // Export Color & Information
 export RED='\033[0;31m'
@@ -102,34 +101,22 @@ exit 0
 fi
 
 clear
-systemctl stop nginx
-systemctl stop xray
-domain=$(cat /var/lib/scrz-prem/ipvps.conf | cut -d'=' -f2)
-Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
-if [[ ! -z "$Cek" ]]; then
-sleep 1
-echo -e "[ ${red}WARNING${NC} ] Detected port 80 used by $Cek " 
-systemctl stop $Cek
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Processing to stop $Cek " 
-sleep 1
-fi
-echo -e "[ ${green}INFO${NC} ] Starting renew gen-ssl... " 
-sleep 2
-/root/.acme.sh/acme.sh --upgrade
-/root/.acme.sh/acme.sh --upgrade --auto-upgrade
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-echo -e "[ ${green}INFO${NC} ] Renew gen-ssl done... " 
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Starting service $Cek " 
-sleep 2
-echo $domain > /etc/xray/domain
-systemctl start nginx
-systemctl start xray
-echo -e "[ ${green}INFO${NC} ] All finished... " 
-sleep 0.5
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│                   BACKUP MENU                   │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
+echo -e " ┌───────────────────────────────────────────────┐" | lolcat
+echo -e "    ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Backup${NC}"
+echo -e "    ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} Restore${NC}"
+echo -e "    ${BICyan}[${BIGreen}0${BICyan}]${BIGreen} Back To Menu${NC}"
+echo -e "    ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} Exit${NC}"
+echo -e " └───────────────────────────────────────────────┘" | lolcat
+echo -e ""
+read -p " Select menu :  "  opt
+echo -e ""
+case $opt in
+01 | 1) clear ; backup ;;
+02 | 2) clear ; restore ;;
+00 | 0) clear ; menu ;;
+x) exit ;;
+*) clear ; menu-backup ;;
+esac
