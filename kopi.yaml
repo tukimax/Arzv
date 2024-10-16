@@ -1,0 +1,80 @@
+{
+  "log": {
+    "level": "panic"
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "remote-dns",
+        "address": "1.1.1.1",
+        "detour": "PROXY"
+      },
+      {
+        "tag": "local",
+        "address": "112.215.198.248",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "local",
+        "disable_cache": true
+      }
+    ],
+    "strategy": "prefer_ipv4",
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "tun0",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/30",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "PROXY",
+      "providers": "AKUN"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      }
+    ],
+    "final": "PROXY",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "outbound_providers": [
+    {
+      "tag": "AKUN",
+      "url": "https://raw.githubusercontent.com/tukimax/Arzv/main/abcde.txt",
+      "interval": "24h",
+      "disable_user_agent": false,
+      "cache_file": "abcde.txt"
+    }
+  ]
+}
