@@ -1,0 +1,202 @@
+proxies:
+  - name: NUSA
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: cba51c3f-80fb-4306-a41a-4a7a255b5b1e
+    skip-cert-verify: true
+    sni: nusa2.dstb.cloud
+    network: ws
+    ws-opts:
+      path: /trojan-ws
+      headers:
+        Host: nusa2.dstb.cloud
+    udp: true
+  - name: ATHA
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: 4f8cb7ee-3069-4dcd-b682-35db450e71aa
+    skip-cert-verify: true
+    sni: ganteng.kyren.xyz
+    network: ws
+    ws-opts:
+      path: /trojan-tls
+      headers:
+        Host: ganteng.kyren.xyz
+    udp: true
+  - name: NEVA
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: c09e7bab-0c6f-4510-9cab-afb75d046d20
+    skip-cert-verify: true
+    sni: nv.fkdigital.biz.id
+    network: ws
+    ws-opts:
+      path: /trojan-tls
+      headers:
+        Host: nv.fkdigital.biz.id
+    udp: true
+  - name: LINODE SG
+    server: go.appsflyer.com
+    port: 443
+    type: vless
+    uuid: da623f1d-ec64-41b6-8cd7-e6b2793d8af9
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: lnd.jiwavpn.xyz
+    network: ws
+    ws-opts:
+      path: /vless-tls
+      headers:
+        Host: lnd.jiwavpn.xyz
+    udp: true
+  - name: HOSTHATCH
+    server: go.appsflyer.com
+    port: 443
+    type: vless
+    uuid: e91ca30b-4635-49c1-bc77-b9cf2136c162
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sg1.fayde.party
+    network: ws
+    ws-opts:
+      path: /vless-tls
+      headers:
+        Host: sg1.fayde.party
+    udp: true
+  - name: MICROSOFT
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: f15a5ae1-4544-4bf3-ba49-3fc05c61ca01
+    skip-cert-verify: true
+    sni: vpn.bimadewantoro.my.id
+    network: ws
+    ws-opts:
+      path: /trojan-tls
+      headers:
+        Host: vpn.bimadewantoro.my.id
+    udp: true
+  - name: XRAY_VLESS_TLS_yess4gg
+    server: go.appsflyer.com
+    port: 443
+    type: vless
+    uuid: 0cbd7b64-7af1-44b6-bbcc-5be6b92bf034
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: oden99.xtechgo.uk
+    network: ws
+    ws-opts:
+      path: /vless-tls
+      headers:
+        Host: oden99.xtechgo.uk
+    udp: true
+  - name: CDNEXT
+    server: go.appsflyer.com
+    port: 443
+    type: vmess
+    uuid: b7f4c76f-318a-4b89-9f2a-5834b1f48f34
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: vvip.iain.biz.id
+    network: ws
+    ws-opts:
+      path: /vmess-tls
+      headers:
+        Host: vvip.iain.biz.id
+    udp: true
+  - name: SGDO
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: 57ee25ad-de6a-4edf-bfe8-cfade6436a5e
+    skip-cert-verify: true
+    sni: free.primehealthtips.com
+    network: ws
+    ws-opts:
+      path: /trojan-tls
+      headers:
+        Host: free.primehealthtips.com
+    udp: true
+  - name: ATLANTIC
+    server: go.appsflyer.com
+    port: 443
+    type: vmess
+    uuid: af5c057f-8253-4dd8-b4db-14e8b888377f
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sg1.romusah.my.id
+    network: ws
+    ws-opts:
+      path: /vmess-tls
+      headers:
+        Host: sg1.romusah.my.id
+    udp: true
+  - name: VULTR
+    server: 45.32.122.245
+    port: 443
+    type: vmess
+    uuid: 1dc220b9-3a22-4b5c-bfbb-e74e22d7f982
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: s3.amazonaws.com
+    network: ws
+    ws-opts:
+      path: /vmess-tls
+      headers:
+        Host: s3.amazonaws.com
+    udp: true
+  - name: CHEL
+    server: go.appsflyer.com
+    port: 443
+    type: trojan
+    password: d0909a5d-e650-4983-9400-5f86f8635f77
+    skip-cert-verify: true
+    sni: profit-server.aken.my.id
+    network: ws
+    ws-opts:
+      path: /trojan-ws
+      headers:
+        Host: profit-server.aken.my.id
+    udp: true
+  - name: CONTA
+    server: 46.250.226.176
+    port: 443
+    type: vless
+    uuid: fae61b17-3880-4b5d-8a44-ce58e5d42f73
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: s3.amazonaws.com
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: s3.amazonaws.com
+    udp: true
+  - name: SHINJIRU MY
+    server: 101.99.84.27
+    port: 443
+    type: vless
+    uuid: 76e3d012-987d-433e-8835-7b6a12846d06
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: s3.amazonaws.com
+    network: ws
+    ws-opts:
+      path: /vless-tls
+      headers:
+        Host: s3.amazonaws.com
+    udp: true
